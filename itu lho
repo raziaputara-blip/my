@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+<style>
+* { box-sizing:border-box; }
+body {
+  margin:0; min-height:100vh;
+  display:flex; justify-content:center; align-items:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#c084fc);
+  overflow:hidden; color:#fff;
+}
+.card {
+  width:90%; max-width:380px;
+  padding:35px 25px; text-align:center;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:28px;
+  box-shadow:0 15px 40px #9d174d44;
+  z-index:2;
+}
+.heart { font-size:65px; animation:beat 1s infinite; }
+@keyframes beat {
+  50% { transform:scale(1.2); }
+}
+h1 { font-size:27px; }
+p { line-height:1.7; font-size:16px; }
+button {
+  border:0; border-radius:30px;
+  padding:13px 25px; margin:8px;
+  font-size:15px; font-weight:bold;
+  cursor:pointer; transition:.2s;
+}
+.yes { background:#fff; color:#ec4899; }
+.no { background:#fce7f3; color:#be185d; }
+button:active { transform:scale(.9); }
+#result { font-weight:bold; margin-top:20px; }
+.floating {
+  position:absolute; bottom:-30px;
+  animation:float 6s linear infinite;
+  opacity:.7;
+}
+@keyframes float {
+  to { transform:translateY(-110vh) rotate(360deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="heart">💗</div>
+  <h1>Hai, Cantik! 🌷</h1>
+  <p>
+    Aku punya satu pertanyaan nih...
+    <br><br>
+    Kamu tahu nggak kenapa aku suka lihat langit?
+    <br><br>
+    Karena langit punya bintang,
+    tapi aku punya kamu yang jauh lebih indah. 🥺
+  </p>
+
+  <h3>Mau nggak jadi alasan aku senyum setiap hari? ❤️</h3>
+
+  <button class="yes" onclick="jawab(true)">MAU ❤️</button>
+  <button class="no" onclick="jawab(false)">GAK MAU 🙈</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function jawab(pilihan) {
+  const result = document.getElementById("result");
+
+  if (pilihan) {
+    result.innerHTML =
+      "YEEEE! ❤️ Mulai sekarang jangan lupa bahagia ya, ada aku yang selalu ingin melihat senyummu! 🥰";
+  } else {
+    result.innerHTML =
+      "Yahh 🥺 Gapapa, aku tetap doain kamu bahagia. Tapi boleh coba jawab lagi? ❤️";
+  }
+}
+
+function hati() {
+  const h = document.createElement("div");
+  h.className = "floating";
+  h.innerHTML = ["❤️","💕","💗","💖"][Math.floor(Math.random()*4)];
+  h.style.left = Math.random()*100+"vw";
+  h.style.fontSize = (15+Math.random()*25)+"px";
+  h.style.animationDuration = (4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+setInterval(hati,500);
+</script>
+
+</body>
+</html>
